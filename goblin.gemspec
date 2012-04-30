@@ -14,4 +14,11 @@ Gem::Specification.new do |gem|
   gem.name          = "goblin"
   gem.require_paths = ["lib"]
   gem.version       = Goblin::VERSION
+
+  gem.add_runtime_dependency 'rubyzip', '~> 0.9.0'
+  gem.add_runtime_dependency 'nokogiri', '~> 1.5.0'
+  gem.add_development_dependency "rake", '>= 0.9.2'
+  gem.add_development_dependency 'rspec', '~> 2.9.0'
+  gem.add_development_dependency 'growl', '~> 1.0.0'
+  gem.add_development_dependency "guard-rspec", '~> 0.7.0'
 end
