@@ -27,5 +27,11 @@ module Goblin
       end
     end
 
+    def each_row
+      @content.xpath(".//table:table-row").each do |rows|
+        yield rows
+      end
+    end
+
   end
 end

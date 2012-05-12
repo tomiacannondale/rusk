@@ -42,4 +42,14 @@ describe Goblin::Sheet do
     end
   end
 
+  describe "#each_row" do
+    it "access order by first row" do
+      xml_cells = Nokogiri::XML(File.read("#{dir}/general_datas_content.xml")).xpath("//table:table")[0].xpath(".//table:table-row")
+      index = 0
+      @sheet.each_row do |rows|
+        rows[0].should eq xml_cells[index].xpath(".//table-cell")[0]
+      end
+    end
+  end
+
 end
