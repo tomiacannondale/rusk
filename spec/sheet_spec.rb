@@ -28,6 +28,18 @@ describe Goblin::Sheet do
         it { @sheet[1000, 10000].should be_nil }
       end
     end
+
+  end
+
+  describe "#each" do
+    it "access order by row and column" do
+      xml_cells = Nokogiri::XML(File.read("#{dir}/general_datas_content.xml")).xpath("//table:table")[0].xpath(".//table:table-cell").map{ |i| Goblin::Cell.new(i) }
+      index = 0
+      @sheet.each do |cell|
+        cell.value.should eq xml_cells[index].value
+        index += 1
+      end
+    end
   end
 
 end

@@ -16,5 +16,14 @@ module Goblin
       cell_content = row_content.xpath(".//table:table-cell")[column]
       cell_content && Goblin::Cell.new(cell_content)
     end
+
+    def each
+      @content.xpath(".//table:table-row").each do |rows|
+        rows.xpath(".//table:table-cell").each do |cell|
+          yield Goblin::Cell.new(cell)
+        end
+      end
+    end
+
   end
 end
