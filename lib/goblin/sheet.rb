@@ -2,6 +2,8 @@
 
 module Goblin
   class Sheet
+    include Enumerable
+
     def initialize(content)
       @content = content
     end
