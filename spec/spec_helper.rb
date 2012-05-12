@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'rspec'
 require File.expand_path('../lib/goblin', File.dirname(__FILE__))
+require 'pry'
 
 module Goblin::SpecHelpers
   def dir
