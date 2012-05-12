@@ -3,6 +3,8 @@ require 'zip/zip'
 
 module Goblin
   class Book
+    attr_reader :sheets
+
     def initialize(file)
       Zip::ZipFile.open(file) do |files|
         @content = Nokogiri::XML(files.read("content.xml"))
