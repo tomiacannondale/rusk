@@ -3,9 +3,9 @@
   <office:scripts/>
   <office:font-face-decls>
     <style:font-face style:name="Arial" svg:font-family="Arial" style:font-family-generic="swiss" style:font-pitch="variable"/>
-    <style:font-face style:name="Arial Unicode MS" svg:font-family="&apos;Arial Unicode MS&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+    <style:font-face style:name="Arial Unicode MS" svg:font-family="'Arial Unicode MS'" style:font-family-generic="system" style:font-pitch="variable"/>
     <style:font-face style:name="Tahoma" svg:font-family="Tahoma" style:font-family-generic="system" style:font-pitch="variable"/>
-    <style:font-face style:name="ヒラギノ角ゴ ProN W3" svg:font-family="&apos;ヒラギノ角ゴ ProN W3&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+    <style:font-face style:name="ヒラギノ角ゴ ProN W3" svg:font-family="'ヒラギノ角ゴ ProN W3'" style:font-family-generic="system" style:font-pitch="variable"/>
   </office:font-face-decls>
   <office:automatic-styles>
     <style:style style:name="co1" style:family="table-column">
@@ -23,8 +23,10 @@
       <number:minutes number:style="long"/>
     </number:time-style>
     <number:date-style style:name="N5076" number:language="en" number:country="US" number:automatic-order="true">
-      <number:month number:style="long" number:textual="true"/><number:text> </number:text>
-      <number:day/><number:text>, </number:text>
+      <number:month number:style="long" number:textual="true"/>
+      <number:text> </number:text>
+      <number:day/>
+      <number:text>, </number:text>
       <number:year number:style="long"/>
     </number:date-style>
     <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N5076"/>
@@ -33,57 +35,57 @@
   <office:body>
     <office:spreadsheet>
       <table:table table:name="Sheet1" table:style-name="ta1">
-	<table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
-	<table:table-row table:style-name="ro2">
-	  <table:table-cell office:value-type="string">
-	    <text:p>string</text:p>
-	  </table:table-cell>
-	  <table:table-cell office:value-type="string">
-	    <text:p>mruby</text:p>
-	  </table:table-cell>
-	</table:table-row>
-	<table:table-row table:style-name="ro2">
-	  <table:table-cell office:value-type="string">
-	    <text:p>date</text:p>
-	  </table:table-cell>
-	  <table:table-cell table:style-name="ce1" office:value-type="date" office:date-value="2012-04-29">
-	    <text:p>April 29, 2012</text:p>
-	  </table:table-cell>
-	</table:table-row>
-	<table:table-row table:style-name="ro2">
-	  <table:table-cell office:value-type="string">
-	    <text:p>time</text:p>
-	  </table:table-cell>
-	  <table:table-cell table:style-name="ce2" office:value-type="time" office:time-value="PT16H50M00S">
-	    <text:p>16:50</text:p>
-	  </table:table-cell>
-	</table:table-row>
-	<table:table-row table:style-name="ro2">
-	  <table:table-cell office:value-type="string">
-	    <text:p>float</text:p>
-	  </table:table-cell>
-	  <table:table-cell office:value-type="float" office:value="7000">
-	    <text:p>7000</text:p>
-	  </table:table-cell>
-	</table:table-row>
-	<table:table-row table:style-name="ro2">
-	  <table:table-cell office:value-type="string" table:number-columns-spanned="2" table:number-rows-spanned="1">
-	    <text:p>merged_cell</text:p>
-	  </table:table-cell>
-	  <table:covered-table-cell/>
-	</table:table-row>
+        <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string">
+            <text:p>string</text:p>
+          </table:table-cell>
+          <table:table-cell office:value-type="string">
+            <text:p>mruby</text:p>
+          </table:table-cell>
+        </table:table-row>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string">
+            <text:p>date</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="ce1" office:value-type="date" office:date-value="2012-04-29">
+            <text:p>April 29, 2012</text:p>
+          </table:table-cell>
+        </table:table-row>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string">
+            <text:p>time</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="ce2" office:value-type="time" office:time-value="PT16H50M00S">
+            <text:p>16:50</text:p>
+          </table:table-cell>
+        </table:table-row>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string">
+            <text:p>float</text:p>
+          </table:table-cell>
+          <table:table-cell office:value-type="float" office:value="7000">
+            <text:p>7000</text:p>
+          </table:table-cell>
+        </table:table-row>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string" table:number-columns-spanned="2" table:number-rows-spanned="1">
+            <text:p>merged_cell</text:p>
+          </table:table-cell>
+          <table:covered-table-cell/>
+        </table:table-row>
       </table:table>
       <table:table table:name="Sheet2" table:style-name="ta1">
-	<table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
-	<table:table-row table:style-name="ro2">
-	  <table:table-cell/>
-	</table:table-row>
+        <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell/>
+        </table:table-row>
       </table:table>
       <table:table table:name="Sheet3" table:style-name="ta1">
-	<table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
-	<table:table-row table:style-name="ro2">
-	  <table:table-cell/>
-	</table:table-row>
+        <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell/>
+        </table:table-row>
       </table:table>
     </office:spreadsheet>
   </office:body>
