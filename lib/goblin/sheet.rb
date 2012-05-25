@@ -6,6 +6,10 @@ module Goblin
 
     def initialize(content)
       @content = content
+      @cells = []
+      @content.xpath('.//table:table-row').each do |row_range|
+        @cells << row_range.xpath(".//table:table-cell|.//table:covered-table-cell")
+      end
     end
 
     def name
@@ -13,10 +17,8 @@ module Goblin
     end
 
     def [](row, column)
-      row_content = @content.xpath(".//table:table-row")[row]
-      return nil unless row_content
-      cell_content = row_content.xpath(".//table:table-cell")[column]
-      cell_content && Goblin::Cell.new(cell_content)
+      return nil if row > @cells.size || column > @cells[0].size
+      Goblin::Cell.new(@cells[row][column])
     end
 
     def each

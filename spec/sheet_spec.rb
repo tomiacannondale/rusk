@@ -17,6 +17,11 @@ describe Goblin::Sheet do
       it { @sheet[0, 0].value.should eq "string" }
       it { @sheet[0, 1].value.should eq "mruby" }
       it { @sheet[1, 1].value.should eq Date.new(2012,4,29) }
+      it { @sheet[4, 2].value.should eq 'after merged column' }
+      it { @sheet[5, 1].value.should eq 'merged first row cell' }
+      it { @sheet[6, 1].value.should eq 'merged second row cell' }
+      it { @sheet[11, 0].value.should eq 'hide the cell next to' }
+      it { @sheet[11, 1].value.should eq 'hidden cell' }
     end
 
     context "with not exist cell index" do
