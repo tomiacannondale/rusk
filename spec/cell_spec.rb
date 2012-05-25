@@ -4,30 +4,33 @@ require File.expand_path('spec_helper', File.dirname(__FILE__))
 describe Goblin::Cell do
   before do
     @general_datas_content = Nokogiri::XML(File.read("#{dir}/general_datas_content.xml"))
-    @general_datas_sheet = @general_datas_content.xpath("//table:table")[0]
+    @cells = []
+    @general_datas_content.xpath('.//table:table-row').each do |i|
+      @cells << i.xpath(".//table:table-cell|.//table:covered-table-cell")
+    end
   end
 
   shared_context "goblin::cell when string cell" do
     before do
-      @cell = Goblin::Cell.new(@general_datas_sheet.xpath("//table:table-cell")[1])
+      @cell = Goblin::Cell.new(@cells[0][1])
     end
   end
 
   shared_context "goblin::cell when date cell" do
     before do
-      @cell = Goblin::Cell.new(@general_datas_sheet.xpath("//table:table-cell")[3])
+      @cell = Goblin::Cell.new(@cells[1][1])
     end
   end
 
   shared_context "goblin::cell when time cell" do
     before do
-      @cell = Goblin::Cell.new(@general_datas_sheet.xpath("//table:table-cell")[5])
+      @cell = Goblin::Cell.new(@cells[2][1])
     end
   end
 
   shared_context "goblin::cell when float cell" do
     before do
-      @cell = Goblin::Cell.new(@general_datas_sheet.xpath("//table:table-cell")[7])
+      @cell = Goblin::Cell.new(@cells[3][1])
     end
   end
 

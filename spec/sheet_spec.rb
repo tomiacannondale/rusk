@@ -5,6 +5,20 @@ describe Goblin::Sheet do
   before do
     content = Nokogiri::XML(File.read("#{dir}/general_datas_content.xml"))
     @sheet = Goblin::Sheet.new(content.xpath("//table:table")[0])
+    @cells = [
+      ["string", "mruby", ""],
+      ["date", Date.new(2012,04,29), ""],
+      ["time", "16:50", ""],
+      ["float", 7000.0, ""],
+      ["merged_cell", "after merged column"],
+      ["merged_row cell", "merged first row cell", ""],
+      ["merged second row cell", ""],
+      ["after merged row cell", ""],
+      [""],
+      ["after blank row", ""],
+      ["", "after blank column", ""],
+      ["hide the cell next to", ""]
+    ]
   end
 
   describe "#name" do
@@ -38,10 +52,10 @@ describe Goblin::Sheet do
 
   describe "#each" do
     it "access order by row and column" do
-      xml_cells = Nokogiri::XML(File.read("#{dir}/general_datas_content.xml")).xpath("//table:table")[0].xpath(".//table:table-cell").map{ |i| Goblin::Cell.new(i) }
+      cells = @cells.flatten
       index = 0
       @sheet.each do |cell|
-        cell.value.should eq xml_cells[index].value
+        cell.value.should eq cells[index]
         index += 1
       end
     end
@@ -49,10 +63,10 @@ describe Goblin::Sheet do
 
   describe "#each_row" do
     it "access order by first row" do
-      xml_cells = Nokogiri::XML(File.read("#{dir}/general_datas_content.xml")).xpath("//table:table")[0].xpath(".//table:table-row")
       index = 0
       @sheet.each_row do |rows|
-        rows[0].should eq xml_cells[index].xpath(".//table-cell")[0]
+        rows.map(&:value).should eq @cells[index]
+        index += 1
       end
     end
   end
