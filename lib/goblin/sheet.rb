@@ -31,7 +31,7 @@ module Goblin
 
     def each_row
       @content.xpath(".//table:table-row").each do |rows|
-        yield rows
+        rows.map{ |i| Goblin::Cell.new(i) }
       end
     end
 
