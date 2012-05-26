@@ -13,9 +13,9 @@ describe Goblin::Sheet do
       ["merged_cell", "", "after merged column"],
       ["merged_row cell", "merged first row cell", ""],
       ["", "merged second row cell", ""],
-      ["after merged row cell", ""],
-      [""],
-      ["after blank row", ""],
+      ["after merged row cell", "", ""],
+      ["", "", ""],
+      ["after blank row", "", ""],
       ["", "after blank column", ""],
       ["hide the cell next to", "hidden cell", ""]
     ]
