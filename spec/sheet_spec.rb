@@ -34,6 +34,8 @@ describe Goblin::Sheet do
       it { @sheet[4, 2].value.should eq 'after merged column' }
       it { @sheet[5, 1].value.should eq 'merged first row cell' }
       it { @sheet[6, 1].value.should eq 'merged second row cell' }
+      it { @sheet[8, 0].value.should eq "" }
+      it { @sheet[8, 1].value.should eq "" }
       it { @sheet[11, 0].value.should eq 'hide the cell next to' }
       it { @sheet[11, 1].value.should eq 'hidden cell' }
     end
