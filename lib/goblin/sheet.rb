@@ -8,7 +8,14 @@ module Goblin
       @content = content
       @cells = []
       @content.xpath('.//table:table-row').each do |row_range|
-        @cells << row_range.xpath(".//table:table-cell|.//table:covered-table-cell")
+        row_cells = []
+        row_range.xpath(".//table:table-cell|.//table:covered-table-cell").each do |cell|
+          row_cells << Goblin::Cell.new(cell)
+          (cell["number-columns-repeated"].to_i - 1).times do
+            row_cells << Goblin::Cell.new(cell)
+          end
+        end
+        @cells << row_cells
       end
     end
 
@@ -18,7 +25,7 @@ module Goblin
 
     def [](row, column)
       return nil if row > @cells.size || column > @cells[0].size
-      Goblin::Cell.new(@cells[row][column])
+      @cells[row][column]
     end
 
     def each
