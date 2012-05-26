@@ -22,16 +22,16 @@ module Goblin
     end
 
     def each
-      @content.xpath(".//table:table-row").each do |rows|
-        rows.xpath(".//table:table-cell").each do |cell|
+      @cells.each do |rows|
+        rows.each do |cell|
           yield Goblin::Cell.new(cell)
         end
       end
     end
 
     def each_row
-      @content.xpath(".//table:table-row").each do |rows|
-        rows.map{ |i| Goblin::Cell.new(i) }
+      @cells.each do |rows|
+        yield rows.map{ |i| Goblin::Cell.new(i) }
       end
     end
 
