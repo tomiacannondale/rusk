@@ -31,14 +31,14 @@ module Goblin
     def each
       @cells.each do |rows|
         rows.each do |cell|
-          yield Goblin::Cell.new(cell)
+          yield cell
         end
       end
     end
 
     def each_row
       @cells.each do |rows|
-        yield rows.map{ |i| Goblin::Cell.new(i) }
+        yield rows
       end
     end
 
