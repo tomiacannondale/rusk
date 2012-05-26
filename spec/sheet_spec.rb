@@ -10,14 +10,14 @@ describe Goblin::Sheet do
       ["date", Date.new(2012,04,29), ""],
       ["time", "16:50", ""],
       ["float", 7000.0, ""],
-      ["merged_cell", "after merged column"],
+      ["merged_cell", "", "after merged column"],
       ["merged_row cell", "merged first row cell", ""],
-      ["merged second row cell", ""],
+      ["", "merged second row cell", ""],
       ["after merged row cell", ""],
       [""],
       ["after blank row", ""],
       ["", "after blank column", ""],
-      ["hide the cell next to", ""]
+      ["hide the cell next to", "hidden cell", ""]
     ]
   end
 
