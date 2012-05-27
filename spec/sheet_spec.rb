@@ -17,7 +17,11 @@ describe Goblin::Sheet do
       ["", "", ""],
       ["after blank row", "", ""],
       ["", "after blank column", ""],
-      ["hide the cell next to", "hidden cell", ""]
+      ["hide the cell next to", "hidden cell", ""],
+      ["percentage", 0.1, ""],
+      ["enter date of time", DateTime.new(2012,5,26,18,17), ""],
+      ["boolean", true, false],
+      ["currency", 10.0, ""]
     ]
   end
 

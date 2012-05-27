@@ -17,6 +17,24 @@
     <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
     </style:style>
+    <number:percentage-style style:name="N10">
+      <number:number number:decimal-places="0" number:min-integer-digits="1"/>
+      <number:text>%</number:text>
+    </number:percentage-style>
+    <number:date-style style:name="N51">
+      <number:year number:style="long"/>
+      <number:text>/</number:text>
+      <number:month/>
+      <number:text>/</number:text>
+      <number:day/>
+      <number:text> </number:text>
+      <number:hours/>
+      <number:text>:</number:text>
+      <number:minutes number:style="long"/>
+    </number:date-style>
+    <number:boolean-style style:name="N99">
+      <number:boolean/>
+    </number:boolean-style>
     <number:time-style style:name="N5040" number:language="en" number:country="US">
       <number:hours number:style="long"/>
       <number:text>:</number:text>
@@ -29,8 +47,23 @@
       <number:text>, </number:text>
       <number:year number:style="long"/>
     </number:date-style>
+    <number:currency-style style:name="N5104P0" style:volatile="true" number:language="en" number:country="US">
+      <number:currency-symbol number:language="en" number:country="US">$</number:currency-symbol>
+      <number:number number:decimal-places="2" number:min-integer-digits="1" number:grouping="true"/>
+    </number:currency-style>
+    <number:currency-style style:name="N5104" number:language="en" number:country="US">
+      <style:text-properties fo:color="#ff0000"/>
+      <number:text>-</number:text>
+      <number:currency-symbol number:language="en" number:country="US">$</number:currency-symbol>
+      <number:number number:decimal-places="2" number:min-integer-digits="1" number:grouping="true"/>
+      <style:map style:condition="value()&gt;=0" style:apply-style-name="N5104P0"/>
+    </number:currency-style>
     <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N5076"/>
     <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N5040"/>
+    <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N10"/>
+    <style:style style:name="ce4" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N51"/>
+    <style:style style:name="ce5" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N99"/>
+    <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N5104"/>
   </office:automatic-styles>
   <office:body>
     <office:spreadsheet>
@@ -126,6 +159,44 @@
           <table:covered-table-cell office:value-type="string">
             <text:p>hidden cell</text:p>
           </table:covered-table-cell>
+          <table:table-cell/>
+        </table:table-row>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string">
+            <text:p>percentage</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="ce3" office:value-type="percentage" office:value="0.1">
+            <text:p>10%</text:p>
+          </table:table-cell>
+          <table:table-cell/>
+        </table:table-row>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string">
+            <text:p>enter date of time</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="ce4" office:value-type="date" office:date-value="2012-05-26T18:17:00">
+            <text:p>2012/5/26 18:17</text:p>
+          </table:table-cell>
+          <table:table-cell/>
+        </table:table-row>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string">
+            <text:p>boolean</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="ce5" office:value-type="boolean" office:boolean-value="true">
+            <text:p>TRUE</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="ce5" office:value-type="boolean" office:boolean-value="false">
+            <text:p>FALSE</text:p>
+          </table:table-cell>
+        </table:table-row>
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string">
+            <text:p>currency</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="ce6" office:value-type="currency" office:currency="USD" office:value="10">
+            <text:p>$10.00</text:p>
+          </table:table-cell>
           <table:table-cell/>
         </table:table-row>
       </table:table>
