@@ -154,4 +154,53 @@ describe Goblin::Cell do
     end
 
   end
+
+  describe "#to_s" do
+    context "when boolean cell(true)" do
+      include_context "goblin::cell when boolean(true)"
+      it { @cell.to_s.should eq 'TRUE' }
+    end
+
+    context "when boolean cell(false)" do
+      include_context "goblin::cell when boolean(false)"
+      it { @cell.to_s.should eq 'FALSE' }
+    end
+
+    context "when currency cell" do
+      include_context "goblin::cell when currency"
+      it { @cell.to_s.should eq '$10.00' }
+    end
+
+    context "when string cell" do
+      include_context "goblin::cell when string cell"
+      it { @cell.to_s.should eq "mruby" }
+    end
+
+    context "when date cell" do
+      include_context "goblin::cell when date cell"
+      it { @cell.to_s.should eq 'April 29, 2012' }
+    end
+
+    context "when enter date of time cell" do
+      include_context "goblin::cell when enter date of time cell"
+      it { @cell.to_s.should eq '2012/5/26 18:17' }
+    end
+
+    context "when time cell(not datetime)" do
+      include_context "goblin::cell when time cell"
+      it { @cell.to_s.should eq "16:50" }
+    end
+
+    context "when float cell" do
+      include_context "goblin::cell when float cell"
+      it { @cell.to_s.should eq '7000' }
+    end
+
+    context "when percentage cell" do
+      include_context "goblin::cell when percentage cell"
+      it { @cell.to_s.should eq '10%' }
+    end
+
+  end
+
 end

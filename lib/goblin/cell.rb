@@ -28,5 +28,9 @@ module Goblin
       @content["value-type"]
     end
 
+    def to_s
+      @content.xpath("text:p").text
+    end
+
   end
 end
