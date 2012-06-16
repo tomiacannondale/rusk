@@ -30,9 +30,7 @@ module Goblin
     end
 
     def save
-      Zip::ZipFile.open(@file) do |files|
-        files.get_output_stream("content.xml") { |f| f.puts @content }
-      end
+      @files.get_output_stream("content.xml") { |f| f.puts @content }
     end
 
     def self.open(file, &block)
