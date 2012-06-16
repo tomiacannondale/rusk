@@ -30,4 +30,19 @@ describe Goblin::Book do
 
   end
 
+  describe "#save" do
+    before do
+      @tmp_book = "#{dir}/tmp_general_datas.ods"
+      FileUtils.cp "#{dir}/general_datas.ods", @tmp_book
+      @book = Goblin::Book.open(@tmp_book)
+    end
+
+    after do
+      FileUtils.rm @tmp_book
+    end
+
+    it { expect { @book.save }.to_not raise_error }
+
+  end
+
 end
