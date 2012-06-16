@@ -77,4 +77,28 @@ describe Goblin::Sheet do
     end
   end
 
+  describe "modify ods file" do
+    before do
+      @tmp_file = create_tmp
+    end
+
+    after do
+      remove_tmp
+    end
+
+    describe "#name=" do
+      context "change sheet name of sheet2 to 'changed'" do
+        before do
+          Goblin::Book.open(@tmp_file) do |book|
+            book[1].name = "changed"
+            book.save
+          end
+          @book = Goblin::Book.open(@tmp_file)
+        end
+
+        it { @book[1].name.should eq "changed" }
+      end
+    end
+  end
+
 end

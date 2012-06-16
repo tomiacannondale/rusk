@@ -23,6 +23,10 @@ module Goblin
       @content["name"]
     end
 
+    def name= name
+      @content["table:name"] = name
+    end
+
     def [](row, column)
       return nil if row > @cells.size || column > @cells[0].size
       @cells[row][column]
