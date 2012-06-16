@@ -5,12 +5,19 @@ module Goblin
   class Book
     attr_reader :sheets
 
-    def initialize(file)
+    def initialize(file, &block)
       @file = file
-      Zip::ZipFile.open(@file) do |files|
-        @content = Nokogiri::XML(files.read("content.xml"))
-      end
+      @files = Zip::ZipFile.open(@file)
+      @content = Nokogiri::XML(@files.read("content.xml"))
       @sheets = @content.xpath("//table:table")
+
+      if block
+        begin
+          yield self
+        ensure
+          @files.close
+        end
+      end
     end
 
     def [](name_or_index)
@@ -28,8 +35,8 @@ module Goblin
       end
     end
 
-    def self.open(file)
-      new(file)
+    def self.open(file, &block)
+      new(file, &block)
     end
 
   end

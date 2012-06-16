@@ -4,7 +4,28 @@ require File.expand_path('spec_helper', File.dirname(__FILE__))
 describe Goblin::Book do
 
   describe ".open" do
-    it { expect { Goblin::Book.open("#{dir}/general_datas.ods") }.to_not raise_error }
+    context "without block" do
+      it { expect { Goblin::Book.open("#{dir}/general_datas.ods") }.to_not raise_error }
+    end
+
+    context "with block" do
+      it { expect {
+          Goblin::Book.open("#{dir}/general_datas.ods") do |book|
+            book[0]
+          end
+        }.to_not raise_error
+      }
+
+      it "should be able to use block parameter" do
+        name = nil
+        Goblin::Book.open("#{dir}/general_datas.ods") do |book|
+          name = book[0].name
+        end
+        name.should_not be_nil
+      end
+
+    end
+
   end
 
   describe "#[]" do
