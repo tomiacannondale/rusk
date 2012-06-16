@@ -6,8 +6,7 @@ module Goblin
     attr_reader :sheets
 
     def initialize(file, &block)
-      @file = file
-      @files = Zip::ZipFile.open(@file)
+      @files = Zip::ZipFile.open(file)
       @content = Nokogiri::XML(@files.read("content.xml"))
       @sheets = @content.xpath("//table:table")
 
