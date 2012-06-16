@@ -53,13 +53,11 @@ describe Goblin::Book do
 
   describe "#save" do
     before do
-      @tmp_book = "#{dir}/tmp_general_datas.ods"
-      FileUtils.cp "#{dir}/general_datas.ods", @tmp_book
-      @book = Goblin::Book.open(@tmp_book)
+      @book = Goblin::Book.open(create_tmp)
     end
 
     after do
-      FileUtils.rm @tmp_book
+      remove_tmp
     end
 
     it { expect { @book.save }.to_not raise_error }
