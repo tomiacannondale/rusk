@@ -24,6 +24,19 @@ module Goblin
       end
     end
 
+    def value=(value)
+      if value.is_a? Numeric
+        @content["office:value"] = value.to_s
+        @content["office:value-type"] = "float"
+      elsif value.is_a? Date
+        @content["office:date-value"] = value.strftime("%F")
+        @content["office:value-type"] = 'date'
+      else
+        @content["office:value-type"] = 'string'
+      end
+      @content.xpath("text:p").children.first.content = value
+    end
+
     def value_type
       @content["value-type"]
     end

@@ -203,4 +203,70 @@ describe Goblin::Cell do
 
   end
 
+  describe "modify ods file" do
+    before do
+      @tmp_file = create_tmp
+    end
+
+    after do
+      remove_tmp
+    end
+
+    describe "#value=" do
+      context "'mruby' changed to 'cruby'(string cell changed to string)" do
+        before do
+          Goblin::Book.open(@tmp_file) do |book|
+            sheet = book[0]
+            sheet[0,1].value = "cruby"
+            book.save
+          end
+
+          Goblin::Book.open(@tmp_file) do |book|
+            sheet = book[0]
+            @cell = sheet[0,1]
+          end
+        end
+
+        it { @cell.value.should eq "cruby" }
+      end
+
+      context "string cell changed to date" do
+        before do
+          Goblin::Book.open(@tmp_file) do |book|
+            sheet = book[0]
+            sheet[0,1].value = Date.new(2012,5,7)
+            book.save
+          end
+
+          Goblin::Book.open(@tmp_file) do |book|
+            sheet = book[0]
+            @cell = sheet[0,1]
+          end
+        end
+
+        it { @cell.value.should eq Date.new(2012,5,07) }
+        it { @cell.value_type.should eq 'date' }
+      end
+
+      context "string cell changed to float" do
+        before do
+          Goblin::Book.open(@tmp_file) do |book|
+            sheet = book[0]
+            sheet[0,1].value = 500.1
+            book.save
+          end
+
+          Goblin::Book.open(@tmp_file) do |book|
+            sheet = book[0]
+            @cell = sheet[0,1]
+          end
+        end
+
+        it { @cell.value.should eq 500.1 }
+        it { @cell.value_type.should eq 'float' }
+      end
+
+    end
+  end
+
 end
