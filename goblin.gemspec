@@ -4,9 +4,9 @@ require File.expand_path('../lib/goblin/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["tomi"]
   gem.email         = ["tomiacannondale@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Goblin is library that read and write Open Document Spreadsheet Format(ods).}
+  gem.summary       = %q{Read and write Open Document Spreadsheet Format(ods).}
+  gem.homepage      = "https://github.com/tomiacannondale/goblin"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
