@@ -77,6 +77,17 @@ describe Goblin::Sheet do
     end
   end
 
+  describe "#each_column" do
+    it "access order by first column" do
+      index = 0
+      cells = @cells.transpose
+      @sheet.each_column do |columns|
+        columns.map(&:value).should eq cells[index]
+        index += 1
+      end
+    end
+  end
+
   describe "modify ods file" do
     before do
       @tmp_file = create_tmp

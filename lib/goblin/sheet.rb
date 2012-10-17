@@ -46,5 +46,11 @@ module Goblin
       end
     end
 
+    def each_column
+      @cells.transpose.each do |columns|
+        yield columns
+      end
+    end
+
   end
 end
