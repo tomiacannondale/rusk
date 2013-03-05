@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Goblin::VERSION
 
   gem.add_runtime_dependency 'rubyzip', '~> 0.9.0'
-  gem.add_runtime_dependency 'nokogiri', '~> 1.5.0'
+  gem.add_runtime_dependency 'nokogiri', '~> 1.5.6'
   gem.add_development_dependency "rake", '~> 0.9'
   gem.add_development_dependency 'rspec', '~> 2.11.0'
   gem.add_development_dependency 'rb-fsevent', '~> 0.9.0'
