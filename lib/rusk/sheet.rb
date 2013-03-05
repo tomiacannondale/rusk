@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-module Goblin
+module Rusk
   class Sheet
     include Enumerable
 
@@ -10,9 +10,9 @@ module Goblin
       @content.xpath('.//table:table-row').each do |row_range|
         row_cells = []
         row_range.xpath(".//table:table-cell|.//table:covered-table-cell").each do |cell|
-          row_cells << Goblin::Cell.new(cell)
+          row_cells << Rusk::Cell.new(cell)
           (cell["table:number-columns-repeated"].to_i - 1).times do
-            row_cells << Goblin::Cell.new(cell)
+            row_cells << Rusk::Cell.new(cell)
           end
         end
         @cells << row_cells

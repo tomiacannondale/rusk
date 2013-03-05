@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'date'
 
-module Goblin
+module Rusk
   class Cell
     def initialize(content)
       @content = content

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'zip/zip'
 
-module Goblin
+module Rusk
   class Book
     attr_reader :sheets
 
@@ -25,7 +25,7 @@ module Goblin
       else
         sheet = @sheets.detect{ |i| i["table:name"] == name_or_index }
       end
-      sheet && Goblin::Sheet.new(sheet)
+      sheet && Rusk::Sheet.new(sheet)
     end
 
     def save

@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 require File.expand_path('spec_helper', File.dirname(__FILE__))
 
-describe Goblin::Book do
+describe Rusk::Book do
 
   describe ".open" do
     context "without block" do
-      it { expect { Goblin::Book.open("#{dir}/general_datas.ods") }.to_not raise_error }
+      it { expect { Rusk::Book.open("#{dir}/general_datas.ods") }.to_not raise_error }
     end
 
     context "with block" do
       it { expect {
-          Goblin::Book.open("#{dir}/general_datas.ods") do |book|
+          Rusk::Book.open("#{dir}/general_datas.ods") do |book|
             book[0]
           end
         }.to_not raise_error
@@ -18,7 +18,7 @@ describe Goblin::Book do
 
       it "should be able to use block parameter" do
         name = nil
-        Goblin::Book.open("#{dir}/general_datas.ods") do |book|
+        Rusk::Book.open("#{dir}/general_datas.ods") do |book|
           name = book[0].name
         end
         name.should_not be_nil
@@ -30,7 +30,7 @@ describe Goblin::Book do
 
   describe "#[]" do
     before do
-      @book = Goblin::Book.open("#{dir}/general_datas.ods")
+      @book = Rusk::Book.open("#{dir}/general_datas.ods")
     end
 
     context "with numeric" do
@@ -53,7 +53,7 @@ describe Goblin::Book do
 
   describe "#save" do
     before do
-      @book = Goblin::Book.open(create_tmp)
+      @book = Rusk::Book.open(create_tmp)
     end
 
     after do

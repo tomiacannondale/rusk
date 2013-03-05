@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 require 'rspec'
-require File.expand_path('../lib/goblin', File.dirname(__FILE__))
+require File.expand_path('../lib/rusk', File.dirname(__FILE__))
 require 'pry'
 require 'fileutils'
 
-module Goblin::SpecHelpers
+module Rusk::SpecHelpers
   def dir
     File.expand_path("data", File.dirname(__FILE__))
   end
@@ -22,5 +22,5 @@ module Goblin::SpecHelpers
 end
 
 RSpec.configure do |config|
-  config.include Goblin::SpecHelpers
+  config.include Rusk::SpecHelpers
 end

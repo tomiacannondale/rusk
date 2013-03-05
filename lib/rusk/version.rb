@@ -1,3 +1,3 @@
-module Goblin
+module Rusk
   VERSION = "0.0.1"
 end

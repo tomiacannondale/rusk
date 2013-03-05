@@ -1,19 +1,19 @@
 # -*- encoding: utf-8; mode: ruby -*-
-require File.expand_path('../lib/goblin/version', __FILE__)
+require File.expand_path('../lib/rusk/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["tomi"]
   gem.email         = ["tomiacannondale@gmail.com"]
-  gem.description   = %q{Goblin is library that read and write Open Document Spreadsheet Format(ods).}
+  gem.description   = %q{Rusk is library that read and write Open Document Spreadsheet Format(ods).}
   gem.summary       = %q{Read and write Open Document Spreadsheet Format(ods).}
-  gem.homepage      = "https://github.com/tomiacannondale/goblin"
+  gem.homepage      = "https://github.com/tomiacannondale/rusk"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "goblin"
+  gem.name          = "rusk"
   gem.require_paths = ["lib"]
-  gem.version       = Goblin::VERSION
+  gem.version       = Rusk::VERSION
 
   gem.add_runtime_dependency 'rubyzip', '~> 0.9.0'
   gem.add_runtime_dependency 'nokogiri', '~> 1.5.6'

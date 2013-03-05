@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 require File.expand_path('spec_helper', File.dirname(__FILE__))
 
-describe Goblin::Sheet do
+describe Rusk::Sheet do
   before do
     content = Nokogiri::XML(File.read("#{dir}/general_datas_content.xml"))
-    @sheet = Goblin::Sheet.new(content.xpath("//table:table")[0])
+    @sheet = Rusk::Sheet.new(content.xpath("//table:table")[0])
     @cells = [
       ["string", "mruby", ""],
       ["date", Date.new(2012,04,29), ""],
@@ -31,7 +31,7 @@ describe Goblin::Sheet do
 
   describe "#[]" do
     context "with exist cell index" do
-      it { @sheet[2, 1].should be_kind_of Goblin::Cell }
+      it { @sheet[2, 1].should be_kind_of Rusk::Cell }
       it { @sheet[0, 0].value.should eq "string" }
       it { @sheet[0, 1].value.should eq "mruby" }
       it { @sheet[1, 1].value.should eq Date.new(2012,4,29) }
@@ -100,11 +100,11 @@ describe Goblin::Sheet do
     describe "#name=" do
       context "change sheet name of sheet2 to 'changed'" do
         before do
-          Goblin::Book.open(@tmp_file) do |book|
+          Rusk::Book.open(@tmp_file) do |book|
             book[1].name = "changed"
             book.save
           end
-          @book = Goblin::Book.open(@tmp_file)
+          @book = Rusk::Book.open(@tmp_file)
         end
 
         it { @book[1].name.should eq "changed" }
