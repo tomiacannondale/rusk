@@ -23,7 +23,7 @@ module Goblin
       if name_or_index.is_a? Numeric
         sheet = @sheets[name_or_index]
       else
-        sheet = @sheets.detect{ |i| i["name"] == name_or_index }
+        sheet = @sheets.detect{ |i| i["table:name"] == name_or_index }
       end
       sheet && Goblin::Sheet.new(sheet)
     end

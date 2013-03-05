@@ -11,7 +11,7 @@ module Goblin
         row_cells = []
         row_range.xpath(".//table:table-cell|.//table:covered-table-cell").each do |cell|
           row_cells << Goblin::Cell.new(cell)
-          (cell["number-columns-repeated"].to_i - 1).times do
+          (cell["table:number-columns-repeated"].to_i - 1).times do
             row_cells << Goblin::Cell.new(cell)
           end
         end
@@ -20,7 +20,7 @@ module Goblin
     end
 
     def name
-      @content["name"]
+      @content["table:name"]
     end
 
     def name= name

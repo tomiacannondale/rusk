@@ -10,15 +10,15 @@ module Goblin
     def value
       case value_type
       when "date"
-        if @content["date-value"] =~ /^\d{4}-\d{2}-\d{2}$/
-          Date.strptime(@content["date-value"], "%Y-%m-%d")
+        if @content["office:date-value"] =~ /^\d{4}-\d{2}-\d{2}$/
+          Date.strptime(@content["office:date-value"], "%Y-%m-%d")
         else
-          DateTime.strptime(@content["date-value"], "%Y-%m-%dT%H:%M:%S")
+          DateTime.strptime(@content["office:date-value"], "%Y-%m-%dT%H:%M:%S")
         end
       when "float", "currency", "percentage"
-        @content["value"].to_f
+        @content["office:value"].to_f
       when "boolean"
-        @content["boolean-value"] == 'true'
+        @content["office:boolean-value"] == 'true'
       else
         @content.xpath("text:p").text
       end
@@ -38,7 +38,7 @@ module Goblin
     end
 
     def value_type
-      @content["value-type"]
+      @content["office:value-type"]
     end
 
     def to_s
