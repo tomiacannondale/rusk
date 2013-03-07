@@ -1,12 +1,12 @@
-# Goblin
+# Rusk
 
-Goblin is library that read and write Open Document Spreadsheet Format(ods).
+Rusk is library that read and write Open Document Spreadsheet Format(ods).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'goblin'
+    gem 'rusk'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install goblin
+    $ gem install rusk
 
 ## Usage
 
@@ -23,7 +23,7 @@ Or install it yourself as:
 Read with block.
 
 ```ruby
-	Goblin::Book.open('path_to_odsfile') do |book|
+	Rusk::Book.open('path_to_odsfile') do |book|
 	  # do something
 	end
 ```
@@ -31,16 +31,16 @@ Read with block.
 Read without block.
 
 ```ruby
-	book = Goblin::Book.open('path_to_odsfile')
+	book = Rusk::Book.open('path_to_odsfile')
 	book.close
 ```
 
-Goblin::Book.open can't create new file.
+Rusk::Book.open can't create new file.
 
 ### Save file ###
 
 ```ruby
-	Goblin::Book.open('path_to_odsfile') do |book|
+	Rusk::Book.open('path_to_odsfile') do |book|
 	  # do something
 	  book.save
 	end
@@ -48,9 +48,9 @@ Goblin::Book.open can't create new file.
 
 ### access sheet ###
 
-Goblin::Sheet object can access with Goblin::Book#[] method.
+Rusk::Sheet object can access with Rusk::Book#[] method.
 
-Goblin::Book#[] can access with sheet name or index.
+Rusk::Book#[] can access with sheet name or index.
 
 ```ruby
 	sheet = book[0]
@@ -66,41 +66,41 @@ or
 
 ### read cell ###
 
-Goblin::Cell object can access with Goblin::Sheet#[] and Goblin::Sheet#each and Goblin::Sheet#each_row.
+Rusk::Cell object can access with Rusk::Sheet#[] and Rusk::Sheet#each and Rusk::Sheet#each_row.
 
-Goblin::Sheet#[]
+Rusk::Sheet#[]
 
 ```ruby
-	cell = Goblin::Sheet[0, 0]   # get Goblin::Cell at [A1]
+	cell = Rusk::Sheet[0, 0]   # get Rusk::Cell at [A1]
 ```
 
-Goblin::Sheet#each
+Rusk::Sheet#each
 
 ```ruby
 	sheet.each do |cell|
-	  # do something (cell is Goblin::Cell)
+	  # do something (cell is Rusk::Cell)
 	end
 ```
 
-Goblin::Sheet#each_row
+Rusk::Sheet#each_row
 
 ```ruby
 	sheet.each_row do |row|
-	  # do something (row is Array of Goblin::Cell elements)
+	  # do something (row is Array of Rusk::Cell elements)
 	end
 ```
 
-Goblin::Sheet#each_column
+Rusk::Sheet#each_column
 
 ```ruby
     sheet.each_column do |column|
-	  # do something (column is Array of Goblin::Cell elements)
+	  # do something (column is Array of Rusk::Cell elements)
 	end
 ```
 
 #### cell's value ####
 
-Goblin::Cell#value gets the value of the cell according to the format.
+Rusk::Cell#value gets the value of the cell according to the format.
 
 ```ruby
 	# when cell's value is string
@@ -121,7 +121,7 @@ Goblin::Cell#value gets the value of the cell according to the format.
 
 ### modify cell ###
 
-To set value to cell, use Goblin::Cell#value=.
+To set value to cell, use Rusk::Cell#value=.
 
 ```ruby
 	cell.value = "string" # => set "string" to cell and set string to value-type
@@ -139,7 +139,7 @@ To set value to cell, use Goblin::Cell#value=.
 
 ## Support ##
 
-Report issues and feature requests to [github Issues](https://github.com/tomiacannondale/goblin/issues).
+Report issues and feature requests to [github Issues](https://github.com/tomiacannondale/rusk/issues).
 
 ## Author ##
 
