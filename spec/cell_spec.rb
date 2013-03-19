@@ -266,6 +266,39 @@ describe Rusk::Cell do
         it { @cell.value_type.should eq 'float' }
       end
 
+      context "set to blank cell" do
+        context "set string" do
+          before do
+            Rusk::Book.open(@tmp_file) do |book|
+              sheet = book[0]
+              sheet[10, 0].value = "set string"
+              book.save
+            end
+
+            Rusk::Book.open(@tmp_file) do |book|
+              @cell = book[0][10, 0]
+            end
+          end
+
+          it { @cell.value.should eq "set string" }
+          it { @cell.value_type.should eq 'string' }
+        end
+
+        context "set float" do
+          before do
+            Rusk::Book.open @tmp_file do |book|
+              sheet = book[0]
+              sheet[10, 0].value = 10
+              book.save
+            end
+            Rusk::Book.open(@tmp_file){ |book| @cell = book[0][10,0] }
+          end
+
+          it { @cell.value.should eq 10.0 }
+          it { @cell.value_type.should eq 'float' }
+        end
+      end
+
     end
   end
 

@@ -34,6 +34,15 @@ module Rusk
       else
         @content["office:value-type"] = 'string'
       end
+
+      if @content.xpath("text:p").children.empty?
+        Nokogiri::XML::Text.new("\n", @content).parent = @content
+        textp = Nokogiri::XML::Node.new("text:p", @content)
+        Nokogiri::XML::Text.new("", @content).parent = textp
+        textp.parent = @content
+        Nokogiri::XML::Text.new("\n", @content).parent = @content
+      end
+
       @content.xpath("text:p").children.first.content = value
     end
 
