@@ -19,6 +19,19 @@ module Rusk::SpecHelpers
     FileUtils.rm "#{dir}/tmp_#{file}"
   end
 
+  def set(row, col, value)
+    cell = nil
+    Rusk::Book.open(@tmp_file) do |book|
+      book[0][row, col].value = value
+      book.save
+    end
+
+    Rusk::Book.open(@tmp_file) do |book|
+      cell = book[0][row, col]
+    end
+    cell
+  end
+
 end
 
 RSpec.configure do |config|

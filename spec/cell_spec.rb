@@ -215,16 +215,7 @@ describe Rusk::Cell do
     describe "#value=" do
       context "'mruby' changed to 'cruby'(string cell changed to string)" do
         before do
-          Rusk::Book.open(@tmp_file) do |book|
-            sheet = book[0]
-            sheet[0,1].value = "cruby"
-            book.save
-          end
-
-          Rusk::Book.open(@tmp_file) do |book|
-            sheet = book[0]
-            @cell = sheet[0,1]
-          end
+          @cell = set(0, 1, "cruby")
         end
 
         it { @cell.value.should eq "cruby" }
@@ -232,16 +223,7 @@ describe Rusk::Cell do
 
       context "string cell changed to date" do
         before do
-          Rusk::Book.open(@tmp_file) do |book|
-            sheet = book[0]
-            sheet[0,1].value = Date.new(2012,5,7)
-            book.save
-          end
-
-          Rusk::Book.open(@tmp_file) do |book|
-            sheet = book[0]
-            @cell = sheet[0,1]
-          end
+          @cell = set(0, 1, Date.new(2012,5,7))
         end
 
         it { @cell.value.should eq Date.new(2012,5,07) }
@@ -250,16 +232,7 @@ describe Rusk::Cell do
 
       context "string cell changed to float" do
         before do
-          Rusk::Book.open(@tmp_file) do |book|
-            sheet = book[0]
-            sheet[0,1].value = 500.1
-            book.save
-          end
-
-          Rusk::Book.open(@tmp_file) do |book|
-            sheet = book[0]
-            @cell = sheet[0,1]
-          end
+          @cell = set(0, 1, 500.1)
         end
 
         it { @cell.value.should eq 500.1 }
@@ -269,15 +242,7 @@ describe Rusk::Cell do
       context "set to blank cell" do
         context "set string" do
           before do
-            Rusk::Book.open(@tmp_file) do |book|
-              sheet = book[0]
-              sheet[10, 0].value = "set string"
-              book.save
-            end
-
-            Rusk::Book.open(@tmp_file) do |book|
-              @cell = book[0][10, 0]
-            end
+            @cell = set(10, 0, "set string")
           end
 
           it { @cell.value.should eq "set string" }
@@ -286,12 +251,7 @@ describe Rusk::Cell do
 
         context "set float" do
           before do
-            Rusk::Book.open @tmp_file do |book|
-              sheet = book[0]
-              sheet[10, 0].value = 10
-              book.save
-            end
-            Rusk::Book.open(@tmp_file){ |book| @cell = book[0][10,0] }
+            @cell = set(10, 0, 10)
           end
 
           it { @cell.value.should eq 10.0 }
