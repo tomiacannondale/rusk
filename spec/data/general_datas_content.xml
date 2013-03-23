@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" office:version="1.2">
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" office:version="1.2">
   <office:scripts/>
   <office:font-face-decls>
     <style:font-face style:name="Arial" svg:font-family="Arial" style:font-family-generic="swiss" style:font-pitch="variable"/>
@@ -11,8 +11,17 @@
     <style:style style:name="co1" style:family="table-column">
       <style:table-column-properties fo:break-before="auto" style:column-width="2.267cm"/>
     </style:style>
-    <style:style style:name="ro2" style:family="table-row">
+    <style:style style:name="co2" style:family="table-column">
+      <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
+    </style:style>
+    <style:style style:name="ro1" style:family="table-row">
       <style:table-row-properties style:row-height="0.448cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+    </style:style>
+    <style:style style:name="ro2" style:family="table-row">
+      <style:table-row-properties style:row-height="0.452cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+    </style:style>
+    <style:style style:name="ro3" style:family="table-row">
+      <style:table-row-properties style:row-height="0.427cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
     <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
@@ -35,41 +44,44 @@
     <number:boolean-style style:name="N99">
       <number:boolean/>
     </number:boolean-style>
-    <number:time-style style:name="N5040" number:language="en" number:country="US">
+    <number:time-style style:name="N10040" number:language="en" number:country="US">
       <number:hours number:style="long"/>
       <number:text>:</number:text>
       <number:minutes number:style="long"/>
     </number:time-style>
-    <number:date-style style:name="N5076" number:language="en" number:country="US" number:automatic-order="true">
+    <number:date-style style:name="N10076" number:language="en" number:country="US" number:automatic-order="true">
       <number:month number:style="long" number:textual="true"/>
       <number:text> </number:text>
       <number:day/>
       <number:text>, </number:text>
       <number:year number:style="long"/>
     </number:date-style>
-    <number:currency-style style:name="N5104P0" style:volatile="true" number:language="en" number:country="US">
+    <number:currency-style style:name="N10104P0" style:volatile="true" number:language="en" number:country="US">
       <number:currency-symbol number:language="en" number:country="US">$</number:currency-symbol>
       <number:number number:decimal-places="2" number:min-integer-digits="1" number:grouping="true"/>
     </number:currency-style>
-    <number:currency-style style:name="N5104" number:language="en" number:country="US">
+    <number:currency-style style:name="N10104" number:language="en" number:country="US">
       <style:text-properties fo:color="#ff0000"/>
       <number:text>-</number:text>
       <number:currency-symbol number:language="en" number:country="US">$</number:currency-symbol>
       <number:number number:decimal-places="2" number:min-integer-digits="1" number:grouping="true"/>
-      <style:map style:condition="value()&gt;=0" style:apply-style-name="N5104P0"/>
+      <style:map style:condition="value()&gt;=0" style:apply-style-name="N10104P0"/>
     </number:currency-style>
-    <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N5076"/>
-    <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N5040"/>
+    <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N10076"/>
+    <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N10040"/>
     <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N10"/>
     <style:style style:name="ce4" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N51"/>
     <style:style style:name="ce5" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N99"/>
-    <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N5104"/>
+    <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N10104"/>
+    <style:style style:name="ce7" style:family="table-cell" style:parent-style-name="Default">
+      <style:table-cell-properties fo:border="0.06pt solid #000000"/>
+    </style:style>
   </office:automatic-styles>
   <office:body>
     <office:spreadsheet>
       <table:table table:name="Sheet1" table:style-name="ta1">
         <table:table-column table:style-name="co1" table:number-columns-repeated="3" table:default-cell-style-name="Default"/>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>string</text:p>
           </table:table-cell>
@@ -78,7 +90,7 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>date</text:p>
           </table:table-cell>
@@ -87,7 +99,7 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>time</text:p>
           </table:table-cell>
@@ -96,7 +108,7 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>float</text:p>
           </table:table-cell>
@@ -105,7 +117,7 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string" table:number-columns-spanned="2" table:number-rows-spanned="1">
             <text:p>merged_cell</text:p>
           </table:table-cell>
@@ -114,7 +126,7 @@
             <text:p>after merged column</text:p>
           </table:table-cell>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string" table:number-columns-spanned="1" table:number-rows-spanned="2">
             <text:p>merged_row cell</text:p>
           </table:table-cell>
@@ -123,36 +135,36 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:covered-table-cell/>
           <table:table-cell office:value-type="string">
             <text:p>merged second row cell</text:p>
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>after merged row cell</text:p>
           </table:table-cell>
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell table:number-columns-repeated="3"/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>after blank row</text:p>
           </table:table-cell>
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell/>
           <table:table-cell office:value-type="string">
             <text:p>after blank column</text:p>
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string" table:number-columns-spanned="2" table:number-rows-spanned="1">
             <text:p>hide the cell next to</text:p>
           </table:table-cell>
@@ -161,7 +173,7 @@
           </table:covered-table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>percentage</text:p>
           </table:table-cell>
@@ -170,7 +182,7 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>enter date of time</text:p>
           </table:table-cell>
@@ -179,7 +191,7 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>boolean</text:p>
           </table:table-cell>
@@ -190,7 +202,7 @@
             <text:p>FALSE</text:p>
           </table:table-cell>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
             <text:p>currency</text:p>
           </table:table-cell>
@@ -200,18 +212,31 @@
           <table:table-cell/>
         </table:table-row>
       </table:table>
-      <table:table table:name="Sheet2" table:style-name="ta1">
-        <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
-        <table:table-row table:style-name="ro2">
-          <table:table-cell/>
+      <table:table table:name="rows-repeated" table:style-name="ta1">
+        <table:table-column table:style-name="co1" table:default-cell-style-name="ce7"/>
+        <table:table-column table:style-name="co2" table:default-cell-style-name="ce7"/>
+        <table:table-row table:style-name="ro3">
+          <table:table-cell office:value-type="string">
+            <text:p>title1</text:p>
+          </table:table-cell>
+          <table:table-cell office:value-type="string">
+            <text:p>title2</text:p>
+          </table:table-cell>
+        </table:table-row>
+        <table:table-row table:style-name="ro3" table:number-rows-repeated="10">
+          <table:table-cell table:number-columns-repeated="2"/>
+        </table:table-row>
+        <table:table-row table:style-name="ro3">
+          <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
       </table:table>
       <table:table table:name="Sheet3" table:style-name="ta1">
         <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
-        <table:table-row table:style-name="ro2">
+        <table:table-row table:style-name="ro1">
           <table:table-cell/>
         </table:table-row>
       </table:table>
+      <table:named-expressions/>
     </office:spreadsheet>
   </office:body>
 </office:document-content>
