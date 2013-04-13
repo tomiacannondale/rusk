@@ -23,8 +23,8 @@ module Rusk
     end
 
     def each
-      @cells.each do |rows|
-        rows.each do |cell|
+      each_row do |row_range|
+        row_range.each do |cell|
           yield cell
         end
       end
