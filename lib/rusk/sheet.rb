@@ -7,6 +7,10 @@ module Rusk
     def initialize(content)
       @content = content
       @cells = []
+      rows = @content.xpath('.//table:table-row')
+      @row_size = rows.select { |row| row["table:number-rows-repeated"] }.inject(0) { |sum, item| sum + item["table:number-rows-repeated"].to_i} + rows.size
+      columns = rows[0].xpath(".//table:table-cell|.//table:covered-table-cell")
+      @column_size = columns.select{ |cell| cell["table:number-columns-repeated"] }.inject(0){ |sum, item| sum + item["table:number-columns-repeated"].to_i } + columns.size
     end
 
     def name
@@ -18,7 +22,15 @@ module Rusk
     end
 
     def [](row, column)
-      return nil if row > @cells.size || column > @cells[0].size
+      return nil if @row_size < row || @column_size < column
+      return @cells[row][column] if @cells[row]
+
+      row_index = 0
+      each_row(force: true) do |row_range|
+        break if row_index > row
+        row_index += 1
+      end
+
       @cells[row][column]
     end
 
