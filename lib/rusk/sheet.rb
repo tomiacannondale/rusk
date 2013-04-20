@@ -74,6 +74,7 @@ module Rusk
     end
 
     def each_column
+      self.each_row{|i| i}
       @cells.transpose.each do |columns|
         yield columns
       end
