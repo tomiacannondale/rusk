@@ -50,6 +50,14 @@ describe Rusk::Sheet do
     end
   end
 
+  shared_context "read file created from excel 2010" do
+    before do
+      content = Nokogiri::XML(File.read("#{dir}/created_from_excel2010_content.xml"))
+      @sheet = Rusk::Sheet.new(content.xpath("//table:table")[0])
+      @cells = [["created"], ["by"], ["excel"], [2010.0]]
+    end
+  end
+
   describe "#name" do
     include_context "read Sheet1"
     it { @sheet.name.should eq "Sheet1" }
@@ -89,6 +97,13 @@ describe Rusk::Sheet do
       it { @sheet.map(&:value).should eq @cells.flatten }
     end
 
+    context "read created_from_excel2010" do
+      include_context "read file created from excel 2010"
+      it { @sheet[0, 0].value.should eq "created" }
+      it { @sheet[1, 0].value.should eq "by" }
+      it { @sheet.map(&:value).should eq @cells.flatten }
+    end
+
   end
 
   describe "#each" do
@@ -104,13 +119,26 @@ describe Rusk::Sheet do
   end
 
   describe "#each_row" do
-    include_context "read Sheet1"
-    it "access order by first row" do
-      index = 0
-      @sheet.each_row do |rows|
-        rows.map(&:value).should eq @cells[index]
-        index += 1
+    shared_examples "Sheet#each_row access order by first row" do
+      it "access order by first row" do
+        index = 0
+        @sheet.each_row do |rows|
+          rows.map(&:value).should eq @cells[index]
+          index += 1
+        end
+
+        @cells.size.should eq index
       end
+    end
+
+    context "read Sheet1 of general_datas.ods" do
+      include_context "read Sheet1"
+      it_behaves_like "Sheet#each_row access order by first row"
+    end
+
+    context "read file created from excel" do
+      include_context "read file created from excel 2010"
+      it_behaves_like "Sheet#each_row access order by first row"
     end
   end
 
