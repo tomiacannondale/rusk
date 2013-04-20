@@ -139,6 +139,15 @@ describe Rusk::Sheet do
     context "read file created from excel" do
       include_context "read file created from excel 2010"
       it_behaves_like "Sheet#each_row access order by first row"
+
+      context "once call Sheet#each_row" do
+        before do
+          @sheet.each_row do |cell|
+          end
+        end
+
+        it_behaves_like "Sheet#each_row access order by first row"
+      end
     end
   end
 
