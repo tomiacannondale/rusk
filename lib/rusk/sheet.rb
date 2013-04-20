@@ -83,10 +83,12 @@ module Rusk
     private
     def row_cells(row_range)
       row_cells = []
-      row_range.xpath(".//table:table-cell|.//table:covered-table-cell").each do |cell|
+      row_range.xpath(".//table:table-cell|.//table:covered-table-cell").each_with_index do |cell, index|
+        number_repeated = cell["table:number-columns-repeated"].to_i
+        break if number_repeated + index >= 1024
+
         row_cells << Rusk::Cell.new(cell)
 
-        number_repeated = cell["table:number-columns-repeated"].to_i
         if number_repeated > 1
           cell.remove_attribute("number-columns-repeated")
           base_cell = cell
