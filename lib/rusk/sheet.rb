@@ -38,12 +38,14 @@ module Rusk
           row_index += 1
           next
         end
+        rows_repeated = row_range["table:number-rows-repeated"].to_i
+        break if rows_repeated + row_index + 1 >= 1048576 && options[:force] == false
+
         cells = row_cells(row_range)
         yield cells
         @cells << cells
         row_index += 1
 
-        rows_repeated = row_range["table:number-rows-repeated"].to_i
         if rows_repeated > 1
           base_row_range = row_range
           (rows_repeated - 1).times do |i|
