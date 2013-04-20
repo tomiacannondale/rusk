@@ -115,6 +115,8 @@ describe Rusk::Sheet do
         cell.value.should eq cells[index]
         index += 1
       end
+
+      index.should eq cells.size
     end
   end
 
@@ -127,7 +129,7 @@ describe Rusk::Sheet do
           index += 1
         end
 
-        @cells.size.should eq index
+        index.should eq @cells.size
       end
     end
 
@@ -160,6 +162,7 @@ describe Rusk::Sheet do
         columns.map(&:value).should eq cells[index]
         index += 1
       end
+      index.should eq cells.size
     end
   end
 
