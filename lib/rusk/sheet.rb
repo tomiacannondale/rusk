@@ -30,7 +30,7 @@ module Rusk
       end
     end
 
-    def each_row
+    def each_row(options = {force: false})
       row_index = 0
       @content.xpath('.//table:table-row').each_with_index do |row_range, index|
         if @cells[row_index]
