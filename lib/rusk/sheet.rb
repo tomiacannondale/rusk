@@ -34,7 +34,8 @@ module Rusk
       @cells[row][column]
     end
 
-    def each
+    def each(&block)
+      return Enumerator.new(self) unless block
       each_row do |row_range|
         row_range.each do |cell|
           yield cell
@@ -42,7 +43,8 @@ module Rusk
       end
     end
 
-    def each_row(options = {force: false})
+    def each_row(options = {force: false}, &block)
+      return Enumerator.new(self, :each_row) unless block
       row_index = 0
       @content.xpath('.//table:table-row').each_with_index do |row_range, index|
         if @cells[row_index]
@@ -73,7 +75,8 @@ module Rusk
       end
     end
 
-    def each_column
+    def each_column(&block)
+      return Enumerator.new(self, :each_column) unless block
       self.each_row{|i| i}
       @cells.transpose.each do |columns|
         yield columns

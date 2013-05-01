@@ -118,6 +118,10 @@ describe Rusk::Sheet do
 
       index.should eq cells.size
     end
+
+    context "without block" do
+      it { @sheet.each.should be_kind_of Enumerator }
+    end
   end
 
   describe "#each_row" do
@@ -151,6 +155,11 @@ describe Rusk::Sheet do
         it_behaves_like "Sheet#each_row access order by first row"
       end
     end
+
+    context "without block" do
+      include_context "read Sheet1"
+      it { @sheet.each_row.should be_kind_of Enumerator }
+    end
   end
 
   describe "#each_column" do
@@ -163,6 +172,10 @@ describe Rusk::Sheet do
         index += 1
       end
       index.should eq cells.size
+    end
+
+    context "without block" do
+      it { @sheet.each_column.should be_kind_of Enumerator }
     end
   end
 
