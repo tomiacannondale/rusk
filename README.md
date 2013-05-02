@@ -98,6 +98,16 @@ Rusk::Sheet#each_column
 	end
 ```
 
+If Rusk::Sheet#each, each_row, each_column call without block, return Enumerator instance
+
+```ruby
+    sheet.each_row     # return Enumerator
+	
+	# use method chain
+	sheet.each_row.with_index |rows, index|
+	end
+```
+
 #### cell's value ####
 
 Rusk::Cell#value gets the value of the cell according to the format.
