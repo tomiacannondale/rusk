@@ -29,6 +29,11 @@ module Rusk
       @row_size = @cells.size
     end
 
+    def column_size
+      self.each_row(&:first)
+      @column_size = @cells.first.size
+    end
+
     def [](row, column)
       return nil if @xml_row_size < row || @xml_column_size < column
       return @cells[row][column] if @cells[row]
