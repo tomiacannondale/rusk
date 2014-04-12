@@ -11,9 +11,9 @@ module Rusk
       @content = content
       @cells = []
       rows = @content.xpath('.//table:table-row')
-      @row_size = rows.select { |row| row["table:number-rows-repeated"] }.inject(0) { |sum, item| sum + item["table:number-rows-repeated"].to_i} + rows.size
+      @xml_row_size = rows.select { |row| row["table:number-rows-repeated"] }.inject(0) { |sum, item| sum + item["table:number-rows-repeated"].to_i} + rows.size
       columns = rows[0].xpath(".//table:table-cell|.//table:covered-table-cell")
-      @column_size = columns.select{ |cell| cell["table:number-columns-repeated"] }.inject(0){ |sum, item| sum + item["table:number-columns-repeated"].to_i } + columns.size
+      @xml_column_size = columns.select{ |cell| cell["table:number-columns-repeated"] }.inject(0){ |sum, item| sum + item["table:number-columns-repeated"].to_i } + columns.size
     end
 
     def name
@@ -25,7 +25,7 @@ module Rusk
     end
 
     def [](row, column)
-      return nil if @row_size < row || @column_size < column
+      return nil if @xml_row_size < row || @xml_column_size < column
       return @cells[row][column] if @cells[row]
 
       row_index = 0
