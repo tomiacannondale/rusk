@@ -4,9 +4,6 @@ module Rusk
   class Sheet
     include Enumerable
 
-    attr_reader :row_size
-    attr_reader :column_size
-
     def initialize(content)
       @content = content
       @cells = []
