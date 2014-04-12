@@ -58,6 +58,13 @@ describe Rusk::Sheet do
     end
   end
 
+  shared_context "read repeated" do
+    before do
+      content = Nokogiri::XML(File.read("#{dir}/repeated_content.xml"))
+      @sheet = Rusk::Sheet.new(content.xpath("//table:table")[0])
+    end
+  end
+
   describe "#name" do
     include_context "read Sheet1"
     it { @sheet.name.should eq "Sheet1" }
@@ -240,6 +247,23 @@ describe Rusk::Sheet do
       it { @sheet[11,0].value.should eq "" }
       it { @sheet[11,1].value.should eq "modified 11,1" }
 
+    end
+  end
+
+  describe "#row_size" do
+    context "read general_datas" do
+      include_context "read Sheet1"
+      it { @sheet.row_size.should eq 16 }
+    end
+
+    context "read file created from excel 2010" do
+      include_context "read file created from excel 2010"
+      it { @sheet.row_size.should eq 4  }
+    end
+
+    context "read repeated.ods" do
+      include_context "read repeated"
+      it { @sheet.row_size.should eq 8 }
     end
   end
 
