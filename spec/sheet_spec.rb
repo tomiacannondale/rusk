@@ -267,4 +267,21 @@ describe Rusk::Sheet do
     end
   end
 
+  describe "#colum_size" do
+    context "read general_datas" do
+      include_context "read Sheet1"
+      it { @sheet.column_size.should eq 3 }
+    end
+
+    context "read file created from excel 2010" do
+      include_context "read file created from excel 2010"
+      it { @sheet.column_size.should eq 1 }
+    end
+
+    context "read repeated.ods" do
+      include_context "read repeated"
+      it { @sheet.column_size.should eq 4 }
+    end
+  end
+
 end
