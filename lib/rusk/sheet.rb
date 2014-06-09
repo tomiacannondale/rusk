@@ -5,15 +5,19 @@ module Rusk
     include Enumerable
 
     attr_reader :row_size
-    attr_reader :column_size
+    attr_reader :rows
 
     def initialize(content)
       @content = content
       @cells = []
-      rows = @content.xpath('.//table:table-row')
-      @row_size = rows.select { |row| row["table:number-rows-repeated"] }.inject(0) { |sum, item| sum + item["table:number-rows-repeated"].to_i} + rows.size
-      columns = rows[0].xpath(".//table:table-cell|.//table:covered-table-cell")
-      @column_size = columns.select{ |cell| cell["table:number-columns-repeated"] }.inject(0){ |sum, item| sum + item["table:number-columns-repeated"].to_i } + columns.size
+      @rows = []
+      count = 0
+      @content.xpath('.//table:table-row').select do |row|
+        repeated = row["table:number-rows-repeated"].to_i || 0
+        @rows << Rusk::Row.new(count, count + repeated, row)
+        count += repeated + 1
+      end
+      @row_size = count
     end
 
     def name
@@ -24,89 +28,20 @@ module Rusk
       @content["table:name"] = name
     end
 
-    def [](row, column)
-      return nil if @row_size < row || @column_size < column
-      return @cells[row][column] if @cells[row]
-
-      row_index = 0
-      each_row(force: true) do |row_range|
-        break if row_index > row
-        row_index += 1
+    def [](row_number)
+      rows.each do |r|
+        if r.from >= row_number && row_number <= r.to
+          return r
+        end
       end
-
-      @cells[row][column]
+      return nil
     end
 
     def each(&block)
       return Enumerator.new(self) unless block
-      each_row do |row_range|
-        row_range.each do |cell|
-          yield cell
-        end
+      (@row_size - 1).times do |i|
+        yield self[i]
       end
     end
-
-    def each_row(options = {force: false}, &block)
-      return Enumerator.new(self, :each_row) unless block
-      row_index = 0
-      @content.xpath('.//table:table-row').each_with_index do |row_range, index|
-        if @cells[row_index]
-          yield @cells[row_index]
-          row_index += 1
-          next
-        end
-        rows_repeated = row_range["table:number-rows-repeated"].to_i
-        break if rows_repeated + row_index + 1 >= 1048576 && options[:force] == false
-
-        cells = row_cells(row_range)
-        yield cells
-        @cells << cells
-        row_index += 1
-
-        if rows_repeated > 1
-          base_row_range = row_range
-          (rows_repeated - 1).times do |i|
-            base_row_range.remove_attribute("number-rows-repeated")
-            base_row_range = base_row_range.add_next_sibling(row_range.dup)
-            base_row_range["table:number-rows-repeated"] = (rows_repeated - i)
-            cells = row_cells(base_row_range)
-            yield cells
-            @cells << cells
-            row_index += 1
-          end
-        end
-      end
-    end
-
-    def each_column(&block)
-      return Enumerator.new(self, :each_column) unless block
-      self.each_row{|i| i}
-      @cells.transpose.each do |columns|
-        yield columns
-      end
-    end
-
-    private
-    def row_cells(row_range)
-      row_cells = []
-      row_range.xpath(".//table:table-cell|.//table:covered-table-cell").each_with_index do |cell, index|
-        number_repeated = cell["table:number-columns-repeated"].to_i
-        break if number_repeated + index >= 1024
-
-        row_cells << Rusk::Cell.new(cell)
-
-        if number_repeated > 1
-          cell.remove_attribute("number-columns-repeated")
-          base_cell = cell
-          (number_repeated - 1).times do
-            base_cell = base_cell.add_next_sibling(cell.dup)
-            row_cells << Rusk::Cell.new(base_cell)
-          end
-        end
-      end
-
-      row_cells
-    end
-
   end
 end
